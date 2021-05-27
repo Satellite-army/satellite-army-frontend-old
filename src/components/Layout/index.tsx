@@ -91,6 +91,34 @@ export const AppLayout = React.memo((props: any) => {
                 <Menu.Item key="3" icon={<BankOutlined />}>
                   <Link
                     to={{
+                      pathname: "/wallet",
+                    }}
+                  >
+                    {LABELS.MENU_WALLET}
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="4" icon={<RocketOutlined />}>
+                  <Link
+                    to={{
+                      pathname: "/farming",
+                    }}
+                  >
+                    {LABELS.MENU_FARMING}
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="5" icon={<UnorderedListOutlined />}>
+                  <Link
+                    to={{
+                      pathname: "/analytics",
+                    }}
+                  >
+                    {LABELS.MENU_ANALYTICS}
+                  </Link>
+                </Menu.Item>
+		{/*
+                <Menu.Item key="3" icon={<BankOutlined />}>
+                  <Link
+                    to={{
                       pathname: "/deposit",
                     }}
                   >
@@ -115,6 +143,7 @@ export const AppLayout = React.memo((props: any) => {
                     {LABELS.MENU_LIQUIDATE}
                   </Link>
                 </Menu.Item>
+		*/}
                 {/* Hide margin option for now  */}
                 {/* <Menu.Item key="6"  onItemHover={() => {}}  icon={< LineChartOutlined/>}>
                 <Link
@@ -125,6 +154,7 @@ export const AppLayout = React.memo((props: any) => {
                   {LABELS.MARGIN_TRADING}
                 </Link>
               </Menu.Item> */}
+		{/*
                 {env !== "mainnet-beta" && (
                   <Menu.Item key="7" icon={<RocketOutlined />}>
                     <Link
@@ -145,6 +175,7 @@ export const AppLayout = React.memo((props: any) => {
                     {LABELS.MENU_TRANSACTION}
                   </Link>
                 </Menu.Item>
+		*/}
               </Menu>
               <Menu
                 theme={theme}
