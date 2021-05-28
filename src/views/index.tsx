@@ -1,7 +1,7 @@
-export { HomeView } from "./home";
+export { DashboardView } from "./dashboard";
+export { HomeView } from "./home"; 
 export { BorrowView } from "./borrow";
 export { BorrowReserveView } from "./borrowReserve";
-export { DashboardView } from "./dashboard";
 export { DepositView } from "./deposit";
 export { DepositReserveView } from "./depositReserve";
 export { ReserveView } from "./reserve";
@@ -12,3 +12,7 @@ export { LiquidateView } from "./liquidate";
 export { LiquidateReserveView } from "./liquidateReserve";
 export { MarginTrading } from "./margin";
 export { TransactionListView } from "./transactionList";
+export { DashboardSatelliteView } from "./dashboard_satellite";
+export { WalletView } from "./wallet"
+export { FarmingView } from "./farming"
+export { AnalyticsView } from "./analytics"

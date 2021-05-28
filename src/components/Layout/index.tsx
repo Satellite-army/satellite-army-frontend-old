@@ -25,6 +25,8 @@ export const AppLayout = React.memo((props: any) => {
   const { env } = useConnectionConfig();
   const location = useLocation();
 
+
+  {/*
   const paths: { [key: string]: string } = {
     "/dashboard": "2",
     "/deposit": "3",
@@ -33,6 +35,14 @@ export const AppLayout = React.memo((props: any) => {
     "/margin": "6",
     "/faucet": "7",
     "/transactions": "8",
+  };
+    */}
+  
+  const paths: { [key: string]: string } = {
+    "/dashboard": "1",
+    "/wallet": "2",
+    "/farming": "3",
+    "/analytics": "4",
   };
 
   const current =
@@ -70,6 +80,7 @@ export const AppLayout = React.memo((props: any) => {
                 defaultSelectedKeys={[defaultKey]}
                 mode="inline"
               >
+		{/*
                 <Menu.Item key="1" icon={<HomeOutlined />}>
                   <Link
                     to={{
@@ -79,6 +90,7 @@ export const AppLayout = React.memo((props: any) => {
                     {LABELS.MENU_HOME}
                   </Link>
                 </Menu.Item>
+		  */}
                 <Menu.Item key="2" icon={<PieChartOutlined />}>
                   <Link
                     to={{

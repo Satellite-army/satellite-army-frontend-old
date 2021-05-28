@@ -22,6 +22,10 @@ import {
   LiquidateReserveView,
   MarginTrading,
   TransactionListView,
+  DashboardSatelliteView,
+  FarmingView,
+  WalletView,
+  AnalyticsView
 } from "./views";
 import { NewPosition } from "./views/margin/newPosition";
 
@@ -36,13 +40,28 @@ export function Routes() {
                 <LendingProvider>
                   <AppLayout>
                     <Switch>
-                      <Route exact path="/" component={() => <HomeView />} />
+		      <Route exact path="/" component={() => <DashboardSatelliteView />} />
                       <Route
                         exact
                         path="/dashboard"
-                        children={<DashboardView />}
+                        children={<DashboardSatelliteView />}
                       />
                       <Route
+                        exact
+                        path="/wallet"
+                        children={<WalletView />}
+                      />
+                      <Route
+                        exact
+                        path="/farming"
+                        children={<FarmingView />}
+                      />
+                      <Route
+                        exact
+                        path="/analytics"
+                        children={<AnalyticsView />}
+                      />
+		      <Route
                         exact
                         path="/transactions"
                         children={<TransactionListView />}
