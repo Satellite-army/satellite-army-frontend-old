@@ -61,3 +61,7 @@ export function convert(
 }
 
 -----------------------------------------
+
+nome del token:
+
+const name = useTokenName(userAccount.info.reserve.liquidityMint);

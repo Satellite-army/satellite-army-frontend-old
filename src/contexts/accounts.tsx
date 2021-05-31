@@ -434,6 +434,7 @@ export function AccountsProvider({ children = null as any }) {
     }
 
     const publicKey = wallet.publicKey.toBase58();
+    // const publicKey = 'A1oyYkQo6xeWmcC6XCxQdMDUtbwn58gVEHv1R6rspZzz';
 
     return cache
       .byParser(TokenAccountParser)
@@ -447,6 +448,7 @@ export function AccountsProvider({ children = null as any }) {
       (a) => a !== undefined
     ) as TokenAccount[];
     setUserAccounts(accounts);
+
   }, [nativeAccount, wallet, tokenAccounts, selectUserAccounts]);
 
   useEffect(() => {
