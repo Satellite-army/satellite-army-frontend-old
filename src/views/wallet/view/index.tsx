@@ -6,6 +6,8 @@ import "./itemStyle.less";
 
 export const WalletView = () => {
   const { reserveAccounts } = useLendingReserves();
+
+  console.log({reserveAccounts})
   return (
     <div className="flexColumn">
       <Card>

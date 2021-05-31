@@ -5,23 +5,61 @@ import { GUTTER, LABELS } from "../../constants";
 import { cache, ParsedAccount } from "../../contexts/accounts";
 import { useConnectionConfig } from "../../contexts/connection";
 import { useMarkets } from "../../contexts/market";
-import { useLendingReserves } from "../../hooks";
+import {useLendingReserves, useUserAccounts, useUserBalance, useUserCollateralBalance} from "../../hooks";
 import { reserveMarketCap, Totals } from "../../models";
-import { fromLamports, getTokenName, wadToLamports } from "../../utils/utils";
+import {convert, formatNumber, fromLamports, getTokenIcon, getTokenName, wadToLamports} from "../../utils/utils";
 import { LendingReserveItem } from "./item";
 import { BarChartStatistic } from "./../../components/BarChartStatistic";
 import "./itemStyle.less";
+import {MyTokenItem} from "./myToken";
 
 export const DashboardSatelliteView = () => {
   const { reserveAccounts } = useLendingReserves();
   const { marketEmitter, midPriceInUSD } = useMarkets();
+  const { userAccounts } = useUserAccounts();
   const { tokenMap } = useConnectionConfig();
+
+
+  const [myTokens, setMyTokens] = useState<any[]>([]);
+
+
+  console.log({userAccounts})
+  console.log({marketEmitter, midPriceInUSD})
+
+
   const [totals, setTotals] = useState<Totals>({
     marketSize: 0,
     borrowed: 0,
     lentOutPct: 0,
     items: [],
   });
+
+  useEffect(() => {
+    const tokens = userAccounts.map((tokenAccount => {
+      console.log({price: midPriceInUSD(tokenAccount.info.mint.toBase58())})
+
+      const mintAddress = tokenAccount.info.mint.toBase58()
+
+      return {
+        value: convert(tokenAccount).toFixed(6),
+        name: getTokenName(tokenMap, mintAddress),
+        icon: getTokenIcon(tokenMap, mintAddress),
+      }
+      // return useUserBalance(tokenAccount.info.liquidityMint);
+
+    }))
+
+    const reserveAccountsTokensss = reserveAccounts.map((tokenAccount => {
+      console.log({proce: midPriceInUSD(tokenAccount.info.liquidityMint.toBase58())})
+
+      // return useUserBalance(tokenAccount.info.liquidityMint);
+
+    }))
+
+    setMyTokens(tokens)
+
+    console.log({tokens})
+  }, [userAccounts, reserveAccounts])
 
   useEffect(() => {
     const refreshTotal = () => {
@@ -86,13 +124,14 @@ export const DashboardSatelliteView = () => {
     };
   }, [marketEmitter, midPriceInUSD, setTotals, reserveAccounts, tokenMap]);
 
+  console.log({totals})
   return (
     <div className="flexColumn">
       <Row gutter={GUTTER} className="home-info-row">
         <Col xs={24} xl={5}>
           <Card>
             <Statistic
-              title="Current market size"
+              title="Current market size s"
               value={totals.marketSize}
               precision={2}
               valueStyle={{ color: "#3fBB00" }}
@@ -140,14 +179,23 @@ export const DashboardSatelliteView = () => {
           <div>{LABELS.TABLE_TITLE_DEPOSIT_APY}</div>
           <div>{LABELS.TABLE_TITLE_BORROW_APY}</div>
         </div>
-        {reserveAccounts.map((account) => (
-          <LendingReserveItem
+        {/*{reserveAccounts.map((account) => (*/}
+        {/*  <LendingReserveItem*/}
+        {/*    key={account.pubkey.toBase58()}*/}
+        {/*    reserve={account.info}*/}
+        {/*    address={account.pubkey}*/}
+        {/*    item={totals.items.find(*/}
+        {/*      (item) => item.key === account.pubkey.toBase58()*/}
+        {/*    )}*/}
+        {/*  />*/}
+        {/*))}*/}
+        {userAccounts.map((account) => (
+          <MyTokenItem
             key={account.pubkey.toBase58()}
-            reserve={account.info}
-            address={account.pubkey}
-            item={totals.items.find(
-              (item) => item.key === account.pubkey.toBase58()
-            )}
+            userAccount={account}
+            // item={totals.items.find(
+            //   (item) => item.key === account.pubkey.toBase58()
+            // )}
           />
         ))}
       </Card>
