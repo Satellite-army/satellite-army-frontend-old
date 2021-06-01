@@ -5,6 +5,8 @@ import { useMarkets } from "../contexts/market";
 import { fromLamports } from "../utils/utils";
 import { useUserAccounts } from "./useUserAccounts";
 
+import axios from 'axios';
+
 export function useUserBalance(
   mintAddress?: PublicKey | string,
   account?: PublicKey
@@ -41,9 +43,33 @@ export function useUserBalance(
     balanceLamports,
   ]);
 
+  const fetchPriceFromCG = async (mint: any) => {
+      let tokenlist = await axios.get(`solana.tokenlist.json`)
+      let tokens = tokenlist.data.tokens
+
+
+      let selectedToken
+      for ( let token of tokens ) {
+        if (token.address == mint) {
+          selectedToken = token
+          break;
+        }
+      }
+
+      if (selectedToken != undefined && selectedToken.extensions.coingeckoId != undefined){
+        let response = await axios.get(`https://api.coingecko.com/api/v3/simple/price`, { params: { ids: selectedToken.extensions.coingeckoId, vs_currencies: "usd" } })
+        let price = response.data.solana.usd
+        return price
+      }else{
+        return 0
+      }
+  }
+
   useEffect(() => {
-    const updateBalance = () => {
-      setBalanceInUSD(balance * midPriceInUSD(mint || ""));
+
+    const updateBalance = async () => {
+      //setBalanceInUSD(balance * midPriceInUSD(mint || ""));
+      setBalanceInUSD(balance * await fetchPriceFromCG(mint));
     };
 
     const dispose = marketEmitter.onMarket((args) => {
