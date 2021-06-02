@@ -47,7 +47,6 @@ export function useUserBalance(
       let tokenlist = await axios.get(`solana.tokenlist.json`)
       let tokens = tokenlist.data.tokens
 
-
       let selectedToken
       for ( let token of tokens ) {
         if (token.address == mint) {
@@ -58,7 +57,7 @@ export function useUserBalance(
 
       if (selectedToken != undefined && selectedToken.extensions.coingeckoId != undefined){
         let response = await axios.get(`https://api.coingecko.com/api/v3/simple/price`, { params: { ids: selectedToken.extensions.coingeckoId, vs_currencies: "usd" } })
-        let price = response.data.solana.usd
+        let price = response.data[selectedToken.extensions.coingeckoId].usd
         return price
       }else{
         return 0
