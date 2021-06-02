@@ -28,6 +28,7 @@ import {
   AnalyticsView
 } from "./views";
 import { NewPosition } from "./views/margin/newPosition";
+import {PresentationPage} from "./views/presentation";
 
 export function Routes() {
   return (
@@ -40,7 +41,7 @@ export function Routes() {
                 <LendingProvider>
                   <AppLayout>
                     <Switch>
-		      <Route exact path="/" component={() => <DashboardSatelliteView />} />
+		                  <Route exact path="/" component={() => <PresentationPage />} />
                       <Route
                         exact
                         path="/dashboard"
@@ -61,7 +62,7 @@ export function Routes() {
                         path="/analytics"
                         children={<AnalyticsView />}
                       />
-		      <Route
+		                  <Route
                         exact
                         path="/transactions"
                         children={<TransactionListView />}
