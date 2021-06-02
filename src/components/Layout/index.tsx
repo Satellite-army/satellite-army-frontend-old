@@ -37,7 +37,7 @@ export const AppLayout = React.memo((props: any) => {
     "/transactions": "8",
   };
     */}
-  
+
   const paths: { [key: string]: string } = {
     "/dashboard": "1",
     "/wallet": "2",
@@ -50,6 +50,13 @@ export const AppLayout = React.memo((props: any) => {
     "";
   const defaultKey = paths[current] || "1";
   const theme = "dark";
+
+  console.log({current})
+  console.log({defaultKey})
+
+  if (current === "") {
+    return props.children
+  }
 
   return (
     <div className="App">
