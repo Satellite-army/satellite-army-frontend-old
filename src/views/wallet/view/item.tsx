@@ -8095,10 +8095,10 @@ export const WalletItem = (props: {
           <em>{formatNumber.format(tokenBalance)}</em> 
         </span>
       <span style={{ width: "10%", textAlign: "center", fontSize: "1em" }} className="dashboard-amount-quote">
-        <em>{formatNumber.format(tokenValue)}</em>
+        <em>{formatNumber.format(tokenValue)}</em> $
       </span>
       <span style={{ width: "10%", textAlign: "center", fontSize: "1em" }} className="dashboard-amount-quote">
-          ${formatNumber.format(tokenBalanceInUSD)}
+          {formatNumber.format(tokenBalanceInUSD)} $
         </span>
       <span style={{ width: "10%", textAlign: "center", fontSize: "1.5em" }}>
         <BellFilled style={{ cursor: "pointer"}}/>
