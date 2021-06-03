@@ -33,7 +33,7 @@ export const DashboardSatelliteView = () => {
     lentOutPct: 0,
     items: [],
   });
-
+/* fetches price in lamport
   useEffect(() => {
     const tokens = userAccounts.map((tokenAccount => {
       console.log({price: midPriceInUSD(tokenAccount.info.mint.toBase58())})
@@ -60,7 +60,7 @@ export const DashboardSatelliteView = () => {
 
     console.log({tokens})
   }, [userAccounts, reserveAccounts])
-
+*/
   useEffect(() => {
     const refreshTotal = () => {
       let newTotals: Totals = {
