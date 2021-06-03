@@ -19,6 +19,7 @@ export function useUserBalance(
   );
   const { userAccounts } = useUserAccounts();
   const [balanceInUSD, setBalanceInUSD] = useState(0);
+  const [tokenValue, setTokenValue] = useState(0);
   const { marketEmitter, midPriceInUSD } = useMarkets();
 
   const mintInfo = useMint(mint);
@@ -69,7 +70,9 @@ export function useUserBalance(
 
     const updateBalance = async () => {
       //setBalanceInUSD(balance * midPriceInUSD(mint || ""));
-      setBalanceInUSD(balance * await fetchPriceFromCG(mint));
+      const value = await fetchPriceFromCG(mint)
+      setTokenValue(value)
+      setBalanceInUSD(balance * value);
     };
 
     const dispose = marketEmitter.onMarket((args) => {
@@ -89,5 +92,6 @@ export function useUserBalance(
     balanceInUSD,
     accounts,
     hasBalance: accounts.length > 0 && balance > 0,
+    tokenValue,
   };
 }
