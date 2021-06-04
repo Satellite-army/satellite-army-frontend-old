@@ -21,14 +21,13 @@ export const PresentationPage = () => {
   const { tokenMap } = useConnectionConfig();
 
 
-  console.log('aodsoadoaosdo')
   return (
     <div className="home-background">
       <Card className="header">
         <img className="header-icon" src={Icon}/>
       </Card>
       <div className="body">
-        <div className="title">Satellite.army</div>
+        <div className="title" ><img src="/scritta.png" width="400" height="145"/></div>
         <div className="subtitle">The most complete tracking tool for DeFi, native to Solana</div>
 
         <div className="features">
