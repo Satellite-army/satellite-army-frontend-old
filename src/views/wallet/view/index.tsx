@@ -19,7 +19,7 @@ export const WalletView = () => {
           <div style={{ width: "30%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold"}}>Asset</div>
           <div style={{ width: "10%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold"}}>N</div>
           <div style={{ width: "10%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold"}}>Value</div>
-          <div style={{ width: "10%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold" }}>Total</div>
+          <div style={{ width: "10%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold" }}>Total Value</div>
           <div style={{ width: "10%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold"}}>Alerts</div>
           <div style={{ width: "20%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold"}}>24h change</div>
         </div>  

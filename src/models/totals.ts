@@ -11,3 +11,11 @@ export interface Totals {
   lentOutPct: number;
   items: TotalItem[];
 }
+
+export interface SatelliteTotals {
+  networth: number;
+  totaldebt: number;
+  totaldeposit: number;
+  totalyield: number;
+}
+
