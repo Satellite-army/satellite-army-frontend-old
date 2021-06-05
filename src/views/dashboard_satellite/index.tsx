@@ -1,6 +1,6 @@
 import { MintInfo, u64 } from "@solana/spl-token";
 import { Card, Col, Row, Statistic, Button } from "antd";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { GUTTER, LABELS } from "../../constants";
 import { cache, ParsedAccount, useAccount } from "../../contexts/accounts";
 import { useConnection, useConnectionConfig } from "../../contexts/connection";
@@ -13,6 +13,8 @@ import { BarChartStatistic } from "./../../components/BarChartStatistic";
 import "./itemStyle.less";
 import {MyTokenItem} from "./myToken";
 import axios from "axios";
+import Paragraph from "antd/lib/typography/Paragraph";
+import Plot from "react-plotly.js";
 
 const fetchPriceFromCG = async (mint: any) => {
   let tokenlist = await axios.get(`solana.tokenlist.json`)
@@ -169,8 +171,6 @@ export const DashboardSatelliteView = () => {
       refreshTotal();
     });
 
-    console.log("fatto")
-
     refreshTotal();
 
     return () => {
@@ -298,16 +298,36 @@ export const DashboardSatelliteView = () => {
           */}
         </Col>
       </Row>
-      <Row gutter={GUTTER} className="home-info-row">
+      <Row gutter={GUTTER} className="home-info-row" style={{marginTop:"40"}}>
         <Col xs={24} xl={6}>
           <Button type="primary" href="https://solanabeach.io/">Block Explorer</Button>
+          {userAccounts[0] != undefined &&
+            <Row gutter={GUTTER} className="home-info-row" style={{marginTop:20}}>
+              <Paragraph copyable keyboard>{userAccounts[0]?.pubkey.toString()}</Paragraph>
+            </Row>
+          }
         </Col>
-        {/*
-        <Col xs={24} xl={6}>
-          <CopyToClipboard />
+        <Col xs={24} xl={18}>
+          {userAccounts[0] != undefined &&
+          <Plot
+            data={[
+              {
+                x: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                y: [0, 120, 245, 265, 234, 399, 499, 300, 200, 590, 600, 610],
+                type: 'scatter',
+                mode: 'lines+markers',
+                marker: { color: 'red' },
+                line: {shape:'spline', 'smoothing':1.3}
+              }
+            ]}
+            layout={{
+              width: 1000, height: 500, title: 'Your Wallet', xaxis: { title: 'time' }, yaxis: { title: 'value ($)'}
+            }}
+          />
+          }
         </Col>
-        */}
       </Row>
+
       {/*
       <Card>
         <div className="home-item home-header">

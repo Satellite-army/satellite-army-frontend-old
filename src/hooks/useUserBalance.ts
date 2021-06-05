@@ -40,10 +40,15 @@ export function useUserBalance(
     );
   }, [accounts]);
 
+
+  /*
   const balance = useMemo(() => fromLamports(balanceLamports, mintInfo), [
     mintInfo,
     balanceLamports,
   ]);
+  */
+  const balance = fromLamports(balanceLamports, mintInfo)
+
 
   const fetchPriceFromCG = async (mint: any) => {
       let tokenlist = await axios.get(`solana.tokenlist.json`)

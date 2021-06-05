@@ -7,12 +7,14 @@ import {
 import { calculateDepositAPY, LendingReserve } from "../../../models/lending";
 import { TokenIcon } from "../../../components/TokenIcon";
 import { formatNumber, formatPct } from "../../../utils/utils";
-import { Button } from "antd";
+import { Space,Radio,Select, Popover,Button, InputNumber } from "antd";
 import { Link } from "react-router-dom";
 import { PublicKey } from "@solana/web3.js";
 import { LABELS } from "../../../constants";
-import { BellFilled } from "@ant-design/icons";
+import { SendOutlined,BellFilled } from "@ant-design/icons";
 import axios from "axios";
+
+const { Option } = Select;
 
 
 // TODO fetch this from somewhere else
@@ -8082,6 +8084,29 @@ export const WalletItem = (props: {
 
   // const apy = calculateDepositAPY(props.reserve);
 
+  // bell popup content
+  const content = (
+    <><div style={{ display: "flex" }}>
+      <div>
+        <Radio.Group>
+          <Space direction="vertical">
+            <Radio value={1}>{'>'}</Radio>
+            <Radio value={2}>=</Radio>
+            <Radio value={3}>{'<'}</Radio>
+          </Space>
+        </Radio.Group>
+      </div>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", maxWidth: "50%" }}>
+        <InputNumber style={{ verticalAlign: "middle" }} min={0} defaultValue={0} />
+      </div>
+    </div>
+      <div style={{ textAlign:"center" }}>
+        <Button
+          type="primary"
+          icon={<SendOutlined />} />
+      </div></>
+  );
+
   return (
     //<Link to={`/deposit/${name}`}>
       <div className="deposit-item">
@@ -8101,7 +8126,7 @@ export const WalletItem = (props: {
           {formatNumber.format(tokenBalanceInUSD)} $
         </span>
       <span style={{ width: "10%", textAlign: "center", fontSize: "1.5em" }}>
-        <BellFilled style={{ cursor: "pointer"}}/>
+        <Popover content={content} placement="right" title="Telegram Alert" trigger="click"><BellFilled style={{ cursor: "pointer"}}/></Popover>
         </span>
       <span style={{ width: "20%", textAlign: "center", fontSize: "1em", color:textcolor}} className="dashboard-amount-quote">
           {name != "unknown token" ? change : "-"} %
