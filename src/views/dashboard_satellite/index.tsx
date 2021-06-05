@@ -312,10 +312,11 @@ export const DashboardSatelliteView = () => {
             data={[
               {
                 x: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                y: [0, 0, 245, 265, 234, 399, 499, 300, 200, 590, 600, 610],
+                y: [0, 120, 245, 265, 234, 399, 499, 300, 200, 590, 600, 610],
                 type: 'scatter',
                 mode: 'lines+markers',
                 marker: { color: 'red' },
+                line: {shape:'spline', 'smoothing':1.3}
               }
             ]}
             layout={{
