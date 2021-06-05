@@ -308,6 +308,7 @@ export const DashboardSatelliteView = () => {
           }
         </Col>
         <Col xs={24} xl={18}>
+          {userAccounts[0] != undefined &&
           <Plot
             data={[
               {
@@ -323,6 +324,7 @@ export const DashboardSatelliteView = () => {
               width: 1000, height: 500, title: 'Your Wallet', xaxis: { title: 'time' }, yaxis: { title: 'value ($)'}
             }}
           />
+          }
         </Col>
       </Row>
 
