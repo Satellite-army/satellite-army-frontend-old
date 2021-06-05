@@ -13,7 +13,6 @@ import { BarChartStatistic } from "./../../components/BarChartStatistic";
 import "./itemStyle.less";
 import {MyTokenItem} from "./myToken";
 import axios from "axios";
-import CopyToClipboard from "./copyToClipboard";
 
 const fetchPriceFromCG = async (mint: any) => {
   let tokenlist = await axios.get(`solana.tokenlist.json`)
@@ -90,14 +89,14 @@ export const DashboardSatelliteView = () => {
   })
   const balances = userAccounts.map((account) => {
     amount = account.info.amount
-    return amount 
+    return amount
   })
 
   console.log(mints)
   console.log(balances)
-  
 
-  
+
+
   const [balanceInUSD, setBalanceInUSD] = useState(0);
   let this_mint
   let this_balance: number
@@ -106,7 +105,7 @@ export const DashboardSatelliteView = () => {
   for (var i = 0; i < mints.length; i++) {
     this_balance = balances[i]
     this_mint = mints[i]
-    acc = 
+    acc =
   }
 
   useEffect(() => {
@@ -119,7 +118,7 @@ export const DashboardSatelliteView = () => {
     updateBalance(this_balance);
 
   }, [this_mint]);
-  
+
   for (var i = 0; i < mints.length; i++) {
     const {
       balanceInUSD: tokenBalanceInUSD,
