@@ -142,6 +142,7 @@ export const DashboardSatelliteView = () => {
       const myAsyncLoopFunction = async (userAccounts: any[]) => {
         const promises = userAccounts.map(async (account) => {
             const mint = typeof account.info.mint === "string" ? account.info.mint : account.info.mint?.toBase58()
+            console.log({mint})
             const price = await fetchPriceFromCG(mint)
             newTotals.networth = newTotals.networth + (convert(account)/1000000000 * price);
         })
@@ -332,7 +333,7 @@ export const DashboardSatelliteView = () => {
             ]}
             layout={{
               width: 1000, height: 500, paper_bgcolor: "#000000", plot_bgcolor: "#000000", title: { text: 'Wallet and LP tokens', font: { color: "#F1C231" } }, legend: { font: { color: "#F1C231" } }, xaxis: { title: 'time', color: "#F1C231", gridcolor: "rgba(244,228,183,0.2)" }, yaxis: { title: 'value ($)', color: "#F1C231", gridcolor:"rgba(244,228,183,0.2)"}
-            }} 
+            }}
           />
           }
         </Col>

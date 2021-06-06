@@ -15,15 +15,15 @@ export const WalletView = () => {
     <div className="flexColumn">
       <Card>
         <div className="deposit-item deposit-header">
-          <div style={{ width: "10%", textAlign: "center", fontSize:"1.5em", textDecoration:"bold"}}>#</div>
-          <div style={{ width: "30%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold"}}>Asset</div>
-          <div style={{ width: "10%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold"}}>N</div>
-          <div style={{ width: "10%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold"}}>Value</div>
-          <div style={{ width: "10%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold" }}>Total Value</div>
-          <div style={{ width: "10%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold"}}>Alerts</div>
-          <div style={{ width: "20%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold"}}>24h change</div>
-        </div>  
-        {userAccounts.map((account, index) => ( 
+          <div style={{ color: "rgb(242,193,51)", width: "10%", textAlign: "center", fontSize:"1.5em", textDecoration:"bold"}}>#</div>
+          <div style={{ color: "rgb(242,193,51)", width: "30%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold"}}>Asset</div>
+          <div style={{ color: "rgb(242,193,51)", width: "10%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold"}}>N</div>
+          <div style={{ color: "rgb(242,193,51)", width: "10%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold"}}>Value</div>
+          <div style={{ color: "rgb(242,193,51)", width: "10%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold" }}>Total Value</div>
+          <div style={{ color: "rgb(242,193,51)", width: "10%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold"}}>Alerts</div>
+          <div style={{ color: "rgb(242,193,51)", width: "20%", textAlign: "center", fontSize: "1.5em", textDecoration: "bold"}}>24h change</div>
+        </div>
+        {userAccounts.map((account, index) => (
           <WalletItem
             //key={account.pubkey.toBase58()}
             index={index+1}
