@@ -15,6 +15,7 @@ import {
   TwitterOutlined,
 } from "@ant-design/icons";
 import discordIcon from '../../assets/icon/discordIcon.png'
+import telegramIcon from '../../assets/icon/telegramIcon.png'
 import BasicLayout from "@ant-design/pro-layout";
 import { AppBar } from "./../AppBar";
 import { Link, useLocation } from "react-router-dom";
@@ -222,6 +223,16 @@ export const AppLayout = React.memo((props: any) => {
                     rel="noopener noreferrer"
                   >
                     Discord
+                  </a>
+                </Menu.Item>
+                <Menu.Item key="15" icon={<img src={telegramIcon} style={{height: 15, width: 15, marginRight: 10}}/>}>
+                  <a
+                    title="Telegram"
+                    href={'https://telegram.me/satelliteArmyBot'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Telegram Bot
                   </a>
                 </Menu.Item>
               </Menu>
