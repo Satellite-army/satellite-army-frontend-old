@@ -22,8 +22,8 @@ export const AnalyticsView = () => {
     lpTokenValue: 1.08,
     mint1: "So11111111111111111111111111111111111111112",
     mint2: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-    token1: "SOL",
-    token2: "USDC",
+    token1: "RAY",
+    token2: "SOL",
     tvl: "11,546,870.35",
     lpNumber: 46.4,
     lpTotalValue: 50,
@@ -50,7 +50,7 @@ export const AnalyticsView = () => {
   const originalData : Data[] = [
     {
       x: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-      y: [0, 120, 245, 265, 234, 399, 499, 300, 200, 590, 600, 610],
+      y: [5, 7, 9.23, 12, 11, 20, 24, 15, 17, 19, 20, 11],
       type: 'scatter',
       mode: 'lines+markers',
       marker: { color: 'red' },
@@ -59,7 +59,7 @@ export const AnalyticsView = () => {
     },
     {
       x: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-      y: [150, 130, 105, 342, 455, 599, 300, 223, 300, 210, 433, 634],
+      y: [1.23, 3, 4.12, 2.76, 1, 3.44, 4.85, 5.12, 5.6, 4.34, 3.23, 5.21],
       type: 'scatter',
       mode: 'lines+markers',
       marker: { color: 'green' },
@@ -68,7 +68,7 @@ export const AnalyticsView = () => {
     },
     {
       x: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-      y: [600, 343, 120, 215, 123, 432, 150, 173, 234, 467, 324, 430],
+      y: [10, 12.23, 15, 11, 14.23, 15.43, 16, 21, 25, 34, 36, 40],
       type: 'scatter',
       mode: 'lines+markers',
       marker: { color: 'blue' },
@@ -94,7 +94,7 @@ export const AnalyticsView = () => {
     if(clicked==false){
       setPlotData([...plotData, {
         x: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        y: [245, 245, 245, 245, 245, 245, 245, 245, 245, 245, 245, 245],
+        y: [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
         type: 'scatter',
         mode: 'lines',
         marker: { color: 'red' },
@@ -102,19 +102,19 @@ export const AnalyticsView = () => {
         line: { shape: 'spline', 'smoothing': 1.3, dash:'dash'}
       }, {
           x: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        y: [120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120],
+        y: [12.23, 12.23, 12.23, 12.23, 12.23, 12.23, 12.23, 12.23, 12.23, 12.23, 12.23, 12.23],
           type: 'scatter',
           mode: 'lines',
           marker: { color: 'blue' },
-          name: "USDC entry value",
+          name: "SOL entry value",
           line: { shape: 'spline', 'smoothing': 1.3, dash: 'dash' }
         }, {
           x: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        y: [105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105],
+        y: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
           type: 'scatter',
           mode: 'lines',
           marker: { color: 'green' },
-          name: "SOL entry value",
+          name: "RAY entry value",
           line: { shape: 'spline', 'smoothing': 1.3, dash: 'dash' }
         }])
         setClicked(true)
@@ -145,14 +145,14 @@ export const AnalyticsView = () => {
       <Plot
         data={plotData}
         layout={{
-          width: 1200, height: 500, title: selected + " LP", xaxis: { title: 'time' }, yaxis: { title: 'value ($)' }
+          width: 1200, height: 500, paper_bgcolor: "#000000", plot_bgcolor: "#000000", title: { text: selected + " LP", font: { color: "#F1C231" } }, legend: { font: { color: "#F1C231" } }, xaxis: { title: 'time', color: "#F1C231", gridcolor: "rgba(244,228,183,0.2)" }, yaxis: { title: 'value ($)', color: "#F1C231", gridcolor: "rgba(244,228,183,0.2)" }
         }}
         
       />
       <Plot
         data={AprPlotData}
         layout={{
-          width: 1200, height: 500, title: selected + " APR", xaxis: { title: 'time' }, yaxis: { title: 'APR %' }
+          width: 1200, height: 500, paper_bgcolor: "#000000", plot_bgcolor: "#000000", title: { text: selected + " APR", font: { color: "#F1C231" } }, legend: { font: { color: "#F1C231" } }, xaxis: { title: 'time', color: "#F1C231", gridcolor: "rgba(244,228,183,0.2)" }, yaxis: { title: 'APR (%)', color: "#F1C231", gridcolor: "rgba(244,228,183,0.2)" }
         }}
 
       />
