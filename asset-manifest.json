@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/index.html/static/css/main.7fd91bf5.chunk.css",
-    "main.js": "/index.html/static/js/main.9a74c2a4.chunk.js",
-    "runtime-main.js": "/index.html/static/js/runtime-main.e536b01e.js",
-    "static/css/2.d1dfd3d6.chunk.css": "/index.html/static/css/2.d1dfd3d6.chunk.css",
-    "static/js/2.ca842cb7.chunk.js": "/index.html/static/js/2.ca842cb7.chunk.js",
-    "index.html": "/index.html/index.html",
-    "precache-manifest.f79bca6cfddf513c0153b1fcc0bd6ab3.js": "/index.html/precache-manifest.f79bca6cfddf513c0153b1fcc0bd6ab3.js",
-    "service-worker.js": "/index.html/service-worker.js",
-    "static/js/2.ca842cb7.chunk.js.LICENSE.txt": "/index.html/static/js/2.ca842cb7.chunk.js.LICENSE.txt",
-    "static/media/discordIcon.png": "/index.html/static/media/discordIcon.9679baf1.png",
-    "static/media/homeBackground.jpg": "/index.html/static/media/homeBackground.d5fd752f.jpg",
-    "static/media/icon.png": "/index.html/static/media/icon.b3b0f9c4.png",
-    "static/media/ledger.svg": "/index.html/static/media/ledger.1c9e553b.svg",
-    "static/media/mathwallet.svg": "/index.html/static/media/mathwallet.0b4a504a.svg",
-    "static/media/solflare.svg": "/index.html/static/media/solflare.26e1b240.svg",
-    "static/media/sollet.svg": "/index.html/static/media/sollet.57232127.svg",
-    "static/media/telegramIcon.png": "/index.html/static/media/telegramIcon.64c4ae69.png",
-    "static/media/itemStyle.less": "/index.html/static/media/viola.3b32a34b.jpg"
+    "main.css": "/static/css/main.1084711e.chunk.css",
+    "main.js": "/static/js/main.538f4c5f.chunk.js",
+    "runtime-main.js": "/static/js/runtime-main.024e4ba5.js",
+    "static/css/2.d1dfd3d6.chunk.css": "/static/css/2.d1dfd3d6.chunk.css",
+    "static/js/2.b60ad7e9.chunk.js": "/static/js/2.b60ad7e9.chunk.js",
+    "index.html": "/index.html",
+    "precache-manifest.143f35f6b1f6cd6521eebd23c5f9f37b.js": "/precache-manifest.143f35f6b1f6cd6521eebd23c5f9f37b.js",
+    "service-worker.js": "/service-worker.js",
+    "static/js/2.b60ad7e9.chunk.js.LICENSE.txt": "/static/js/2.b60ad7e9.chunk.js.LICENSE.txt",
+    "static/media/discordIcon.png": "/static/media/discordIcon.9679baf1.png",
+    "static/media/homeBackground.jpg": "/static/media/homeBackground.d5fd752f.jpg",
+    "static/media/icon.png": "/static/media/icon.b3b0f9c4.png",
+    "static/media/ledger.svg": "/static/media/ledger.1c9e553b.svg",
+    "static/media/mathwallet.svg": "/static/media/mathwallet.0b4a504a.svg",
+    "static/media/solflare.svg": "/static/media/solflare.26e1b240.svg",
+    "static/media/sollet.svg": "/static/media/sollet.57232127.svg",
+    "static/media/telegramIcon.png": "/static/media/telegramIcon.64c4ae69.png",
+    "static/media/itemStyle.less": "/static/media/viola.3b32a34b.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.e536b01e.js",
+    "static/js/runtime-main.024e4ba5.js",
     "static/css/2.d1dfd3d6.chunk.css",
-    "static/js/2.ca842cb7.chunk.js",
-    "static/css/main.7fd91bf5.chunk.css",
-    "static/js/main.9a74c2a4.chunk.js"
+    "static/js/2.b60ad7e9.chunk.js",
+    "static/css/main.1084711e.chunk.css",
+    "static/js/main.538f4c5f.chunk.js"
   ]
 }
