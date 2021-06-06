@@ -244,7 +244,7 @@ export const AppLayout = React.memo((props: any) => {
                     Discord
                   </a>
                 </Menu.Item>
-                <Menu.Item key="16" icon={<img src={telegramIcon} style={{height: 15, width: 15, marginRight: 10}}/>}>
+                <Menu.Item key="18" icon={<img src={telegramIcon} style={{height: 15, width: 15, marginRight: 10}}/>}>
                   <a
                     title="Telegram"
                     href={'https://telegram.me/satelliteArmyBot'}
