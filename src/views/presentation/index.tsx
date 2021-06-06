@@ -17,6 +17,8 @@ import Lottie from 'react-lottie';
 import planet1 from '../../assets/animation/planet1.json'
 import planet2 from '../../assets/animation/planet2.json'
 import planet3 from '../../assets/animation/planet3.json'
+import extendedLogo from '../../assets/scritta.png'
+
 
 export const PresentationPage = () => {
   const { reserveAccounts } = useLendingReserves();
@@ -51,7 +53,7 @@ export const PresentationPage = () => {
       {/*</Card>*/}
 
       <div className="body">
-        <div className="title" ><img src="/scritta.png" width="500" height="110"/></div>
+        <div className="title" ><img src={extendedLogo} width="500" height="110"/></div>
         <div className="subtitle">The most complete tracking tool for DeFi, native to Solana</div>
 
         <div className="features">
