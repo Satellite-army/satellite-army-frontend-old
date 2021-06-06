@@ -30,7 +30,7 @@ export const DepositInfoLine = (props: {
       <Col xs={24} xl={5}>
         <Card className={props.className}>
           <Statistic
-            title="Your balance in Oyster"
+            title="Your balance in Satellite"
             value={formatNumber.format(collateralBalance)}
             suffix={name}
           />
