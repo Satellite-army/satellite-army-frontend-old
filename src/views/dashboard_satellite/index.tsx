@@ -316,12 +316,22 @@ export const DashboardSatelliteView = () => {
                 y: [0, 120, 245, 265, 234, 399, 499, 300, 200, 590, 600, 610],
                 type: 'scatter',
                 mode: 'lines+markers',
+                name: 'wallet',
                 marker: { color: 'red' },
                 line: {shape:'spline', 'smoothing':1.3}
+              },
+              {
+                x: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                y: [0, 20, 34, 45, 55, 59, 60, 74, 99, 123, 145, 169],
+                type: 'scatter',
+                name: 'LP tokens',
+                mode: 'lines+markers',
+                marker: { color: 'green' },
+                line: { shape: 'spline', 'smoothing': 1.3 }
               }
             ]}
             layout={{
-              width: 1000, height: 500, title: 'Your Wallet', xaxis: { title: 'time' }, yaxis: { title: 'value ($)'}
+              width: 1000, height: 500, title: 'Wallet and LP tokens', xaxis: { title: 'time' }, yaxis: { title: 'value ($)'}
             }}
           />
           }
