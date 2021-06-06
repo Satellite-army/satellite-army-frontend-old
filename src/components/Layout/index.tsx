@@ -26,10 +26,12 @@ import { useConnectionConfig } from "../../contexts/connection";
 import { LABELS } from "../../constants";
 import config from "./../../../package.json";
 import "./layout.less"
+import { useHistory } from "react-router-dom";
 
 export const AppLayout = React.memo((props: any) => {
   const { env } = useConnectionConfig();
   const location = useLocation();
+  const history = useHistory();
 
 
   {/*
@@ -64,6 +66,11 @@ export const AppLayout = React.memo((props: any) => {
     return props.children
   }
 
+  const goToPresentation = () => {
+    history.push("/");
+
+  }
+
   return (
     <div className="App background-base ">
       <div className="Banner">
@@ -82,7 +89,7 @@ export const AppLayout = React.memo((props: any) => {
         layout="mix"
         fixSiderbar={true}
         primaryColor="#F2C133"
-        logo={<div className="App-logo" />}
+        logo={<div className="App-logo" onClick={goToPresentation} />}
         rightContentRender={() => <AppBar />}
         links={[]}
         menuContentRender={() => {
@@ -109,7 +116,7 @@ export const AppLayout = React.memo((props: any) => {
                     to={{
                       pathname: "/dashboard",
                     }}
-                    className="label-primary"
+                    className={defaultKey === "1" ? "label-selected" : "label-primary"}
                   >
                     {LABELS.MENU_DASHBOARD}
                   </Link>
@@ -119,7 +126,7 @@ export const AppLayout = React.memo((props: any) => {
                     to={{
                       pathname: "/wallet",
                     }}
-                    className="label-primary"
+                    className={defaultKey === "2" ? "label-selected" : "label-primary"}
                   >
                     {LABELS.MENU_WALLET}
                   </Link>
@@ -129,7 +136,7 @@ export const AppLayout = React.memo((props: any) => {
                     to={{
                       pathname: "/farming",
                     }}
-                    className="label-primary"
+                    className={defaultKey === "3" ? "label-selected" : "label-primary"}
                   >
                     {LABELS.MENU_FARMING}
                   </Link>
@@ -139,7 +146,7 @@ export const AppLayout = React.memo((props: any) => {
                     to={{
                       pathname: "/analytics",
                     }}
-                    className="label-primary"
+                    className={defaultKey === "4" ? "label-selected" : "label-primary"}
                   >
                     {LABELS.MENU_ANALYTICS}
                   </Link>
@@ -189,6 +196,7 @@ export const AppLayout = React.memo((props: any) => {
                       to={{
                         pathname: "/faucet",
                       }}
+                      className="label-primary"
                     >
                       {LABELS.MENU_FAUCET}
                     </Link>
@@ -206,7 +214,7 @@ export const AppLayout = React.memo((props: any) => {
                 </Menu.Item>
 		*/}
               </Menu>
-                  
+
               <Menu
                 theme={theme}
                 defaultSelectedKeys={[defaultKey]}
@@ -236,7 +244,7 @@ export const AppLayout = React.memo((props: any) => {
                     Discord
                   </a>
                 </Menu.Item>
-                <Menu.Item key="15" icon={<img src={telegramIcon} style={{height: 15, width: 15, marginRight: 10}}/>}>
+                <Menu.Item key="16" icon={<img src={telegramIcon} style={{height: 15, width: 15, marginRight: 10}}/>}>
                   <a
                     title="Telegram"
                     href={'https://telegram.me/satelliteArmyBot'}
