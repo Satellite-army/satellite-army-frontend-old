@@ -14,6 +14,7 @@ import { setProgramIds } from "../utils/ids";
 import { WalletAdapter } from "./wallet";
 import { cache } from "./accounts";
 
+/*
 export type ENV =
   | "mainnet-beta"
   | "testnet"
@@ -38,6 +39,13 @@ export const ENDPOINTS = [
   { name: "devnet" as ENV, endpoint: clusterApiUrl("devnet") },
   { name: "localnet" as ENV, endpoint: "http://127.0.0.1:8899" },
 ];
+*/
+
+export type ENV =
+  | "devnet"
+
+export const ENDPOINTS = [
+  { name: "devnet" as ENV, endpoint: clusterApiUrl("devnet") }];
 
 const DEFAULT = ENDPOINTS[0].endpoint;
 const DEFAULT_SLIPPAGE = 0.25;
