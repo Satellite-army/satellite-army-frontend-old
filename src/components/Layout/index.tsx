@@ -11,9 +11,11 @@ import {
   RocketOutlined,
   ForkOutlined,
   UnorderedListOutlined,
-  // LineChartOutlined
+  // LineChartOutlined,
+  TwitterOutlined,
 } from "@ant-design/icons";
-
+import discordIcon from '../../assets/icon/discordIcon.png'
+import telegramIcon from '../../assets/icon/telegramIcon.png'
 import BasicLayout from "@ant-design/pro-layout";
 import { AppBar } from "./../AppBar";
 import { Link, useLocation } from "react-router-dom";
@@ -25,6 +27,8 @@ export const AppLayout = React.memo((props: any) => {
   const { env } = useConnectionConfig();
   const location = useLocation();
 
+
+  {/*
   const paths: { [key: string]: string } = {
     "/dashboard": "2",
     "/deposit": "3",
@@ -34,12 +38,27 @@ export const AppLayout = React.memo((props: any) => {
     "/faucet": "7",
     "/transactions": "8",
   };
+    */}
+
+  const paths: { [key: string]: string } = {
+    "/dashboard": "1",
+    "/wallet": "2",
+    "/farming": "3",
+    "/analytics": "4",
+  };
 
   const current =
     [...Object.keys(paths)].find((key) => location.pathname.startsWith(key)) ||
     "";
   const defaultKey = paths[current] || "1";
   const theme = "dark";
+
+  console.log({current})
+  console.log({defaultKey})
+
+  if (current === "") {
+    return props.children
+  }
 
   return (
     <div className="App">
@@ -70,6 +89,7 @@ export const AppLayout = React.memo((props: any) => {
                 defaultSelectedKeys={[defaultKey]}
                 mode="inline"
               >
+		{/*
                 <Menu.Item key="1" icon={<HomeOutlined />}>
                   <Link
                     to={{
@@ -79,6 +99,7 @@ export const AppLayout = React.memo((props: any) => {
                     {LABELS.MENU_HOME}
                   </Link>
                 </Menu.Item>
+		  */}
                 <Menu.Item key="2" icon={<PieChartOutlined />}>
                   <Link
                     to={{
@@ -88,6 +109,34 @@ export const AppLayout = React.memo((props: any) => {
                     {LABELS.MENU_DASHBOARD}
                   </Link>
                 </Menu.Item>
+                <Menu.Item key="3" icon={<BankOutlined />}>
+                  <Link
+                    to={{
+                      pathname: "/wallet",
+                    }}
+                  >
+                    {LABELS.MENU_WALLET}
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="4" icon={<RocketOutlined />}>
+                  <Link
+                    to={{
+                      pathname: "/farming",
+                    }}
+                  >
+                    {LABELS.MENU_FARMING}
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="5" icon={<UnorderedListOutlined />}>
+                  <Link
+                    to={{
+                      pathname: "/analytics",
+                    }}
+                  >
+                    {LABELS.MENU_ANALYTICS}
+                  </Link>
+                </Menu.Item>
+		{/*
                 <Menu.Item key="3" icon={<BankOutlined />}>
                   <Link
                     to={{
@@ -115,6 +164,7 @@ export const AppLayout = React.memo((props: any) => {
                     {LABELS.MENU_LIQUIDATE}
                   </Link>
                 </Menu.Item>
+		*/}
                 {/* Hide margin option for now  */}
                 {/* <Menu.Item key="6"  onItemHover={() => {}}  icon={< LineChartOutlined/>}>
                 <Link
@@ -125,6 +175,7 @@ export const AppLayout = React.memo((props: any) => {
                   {LABELS.MARGIN_TRADING}
                 </Link>
               </Menu.Item> */}
+		{/*
                 {env !== "mainnet-beta" && (
                   <Menu.Item key="7" icon={<RocketOutlined />}>
                     <Link
@@ -145,6 +196,7 @@ export const AppLayout = React.memo((props: any) => {
                     {LABELS.MENU_TRANSACTION}
                   </Link>
                 </Menu.Item>
+		*/}
               </Menu>
               <Menu
                 theme={theme}
@@ -153,25 +205,34 @@ export const AppLayout = React.memo((props: any) => {
                 mode="inline"
                 className="bottom-links"
               >
-                <Menu.Item key="16" icon={<ForkOutlined />}>
+                <Menu.Item key="16" icon={<TwitterOutlined />}>
                   <a
-                    title="Fork"
-                    href={`${config.repository.url}/fork`}
+                    title="Twitter"
+                    href={`https://twitter.com/ArmySatellite`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Fork
+                    Twitter
                   </a>
                 </Menu.Item>
-                ,
-                <Menu.Item key="15" icon={<GithubOutlined />}>
+                <Menu.Item key="15" icon={<img src={discordIcon} style={{height: 15, width: 15, marginRight: 10}}/>}>
                   <a
-                    title="Gtihub"
-                    href={config.repository.url}
+                    title="Discord"
+                    href={'https://discord.gg/tdX3kqEe'}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Github
+                    Discord
+                  </a>
+                </Menu.Item>
+                <Menu.Item key="15" icon={<img src={telegramIcon} style={{height: 15, width: 15, marginRight: 10}}/>}>
+                  <a
+                    title="Telegram"
+                    href={'https://telegram.me/satelliteArmyBot'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Telegram Bot
                   </a>
                 </Menu.Item>
               </Menu>

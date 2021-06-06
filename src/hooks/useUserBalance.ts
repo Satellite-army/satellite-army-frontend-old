@@ -4,6 +4,9 @@ import { useMint } from "../contexts/accounts";
 import { useMarkets } from "../contexts/market";
 import { fromLamports } from "../utils/utils";
 import { useUserAccounts } from "./useUserAccounts";
+import _ from "lodash";
+
+import axios from 'axios';
 
 export function useUserBalance(
   mintAddress?: PublicKey | string,
@@ -16,6 +19,7 @@ export function useUserBalance(
   );
   const { userAccounts } = useUserAccounts();
   const [balanceInUSD, setBalanceInUSD] = useState(0);
+  const [tokenValue, setTokenValue] = useState(0);
   const { marketEmitter, midPriceInUSD } = useMarkets();
 
   const mintInfo = useMint(mint);
@@ -36,14 +40,44 @@ export function useUserBalance(
     );
   }, [accounts]);
 
+
+  /*
   const balance = useMemo(() => fromLamports(balanceLamports, mintInfo), [
     mintInfo,
     balanceLamports,
   ]);
+  */
+  const balance = fromLamports(balanceLamports, mintInfo)
+
+
+  const fetchPriceFromCG = async (mint: any) => {
+      let tokenlist = await axios.get(`solana.tokenlist.json`)
+      let tokens = tokenlist.data.tokens
+
+      let selectedToken
+      for ( let token of tokens ) {
+        if (token.address == mint) {
+          selectedToken = token
+          break;
+        }
+      }
+
+      if (selectedToken != undefined && selectedToken.extensions.coingeckoId != undefined){
+        let response = await axios.get(`https://api.coingecko.com/api/v3/simple/price`, { params: { ids: selectedToken.extensions.coingeckoId, vs_currencies: "usd" } })
+        let price = response.data[selectedToken.extensions.coingeckoId].usd
+        return price
+      }else{
+        return 0
+      }
+  }
 
   useEffect(() => {
-    const updateBalance = () => {
-      setBalanceInUSD(balance * midPriceInUSD(mint || ""));
+
+    const updateBalance = async () => {
+      //setBalanceInUSD(balance * midPriceInUSD(mint || ""));
+      const value = await fetchPriceFromCG(mint)
+      setTokenValue(value)
+      setBalanceInUSD(balance * value);
     };
 
     const dispose = marketEmitter.onMarket((args) => {
@@ -63,5 +97,6 @@ export function useUserBalance(
     balanceInUSD,
     accounts,
     hasBalance: accounts.length > 0 && balance > 0,
+    tokenValue,
   };
 }

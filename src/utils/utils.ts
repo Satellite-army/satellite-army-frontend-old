@@ -139,6 +139,10 @@ export function fromLamports(
     return 0;
   }
 
+  if (!mint?.decimals){
+    return 0;
+  }
+
   const amount = Math.floor(
     typeof account === "number"
       ? account
@@ -146,7 +150,6 @@ export function fromLamports(
       ? account.toNumber()
       : account.info.amount.toNumber()
   );
-
   const precision = Math.pow(10, mint?.decimals || 0);
   return (amount / precision) * rate;
 }

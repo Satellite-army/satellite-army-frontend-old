@@ -12,7 +12,7 @@ export const DepositView = () => {
         <div className="deposit-item deposit-header">
           <div>Asset</div>
           <div>Your wallet balance</div>
-          <div>Your balance in Oyster</div>
+          <div>Your balance in Satellite</div>
           <div>APY</div>
           <div></div>
         </div>
