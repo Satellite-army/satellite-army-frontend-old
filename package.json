@@ -1,5 +1,5 @@
 {
-  "name": "token-lending-ui",
+  "name": "satellite-army-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -75,9 +75,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/solana-labs/oyster-lending"
+    "url": "https://github.com/Satellite-army/satellite-army-frontend"
   },
-  "homepage": ".",
+  "homepage": "index.html",
   "devDependencies": {
     "@types/bn.js": "^4.11.6",
     "@types/bs58": "^4.0.1",
