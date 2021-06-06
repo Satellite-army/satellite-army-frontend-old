@@ -28,6 +28,8 @@ export const PresentationPage = () => {
 
 
   const renderAnimation = (animationData: any) => {
+
+    console.log(animationData)
     const defaultOptions = {
       loop: false,
       autoplay: true,
@@ -60,31 +62,31 @@ export const PresentationPage = () => {
           <div className="feature feature-top">
             {renderAnimation(planet1)}
             <div className="circle">
-              <div className="feature-title">Price</div>
+              <div className="feature-title">Yield</div>
             </div>
-            <div className="feature-description">Track your lp farming tokens</div>
+            <div className="feature-description">Track your LP farming tokens</div>
           </div>
           <div className="feature">
             {renderAnimation(planet2)}
             <div className="circle">
               <div className="feature-title">Impermanent Loss</div>
             </div>
-            <div className="feature-description">lorem ipsum dolor sit amet</div>
+            <div className="feature-description">Easily access IL value of your pools</div>
           </div>
           <div className="feature feature-top">
             {renderAnimation(planet3)}
             <div className="circle">
               <div className="feature-title">Alerts</div>
             </div>
-            <div className="feature-description">lorem ipsum dolor sit amet</div>
+            <div className="feature-description">Setup alerts on price, IL and security updates</div>
           </div>
         </div>
         <div className="buttons">
           <Link to="/dashboard">
-            <Button type="primary" className="button-connect">Connect to the galaxy</Button>
+            <Button type="primary" className="button-connect" style={{fontWeight:"bold"}}>Connect to the galaxy</Button>
           </Link>
           <Link to="/dashboard">
-            <Button type="primary" className="button-connect">Not sure? take a look to our demo</Button>
+            <Button type="primary" className="button-connect" style={{ fontWeight: "bold" }}>Not sure? take a look to our demo</Button>
           </Link>
         </div>
       </div>
