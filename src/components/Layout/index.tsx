@@ -22,6 +22,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useConnectionConfig } from "../../contexts/connection";
 import { LABELS } from "../../constants";
 import config from "./../../../package.json";
+import "./layout.less"
 
 export const AppLayout = React.memo((props: any) => {
   const { env } = useConnectionConfig();
@@ -77,7 +78,7 @@ export const AppLayout = React.memo((props: any) => {
         theme={theme}
         layout="mix"
         fixSiderbar={true}
-        primaryColor="#d83aeb"
+        primaryColor="#F2C133"
         logo={<div className="App-logo" />}
         rightContentRender={() => <AppBar />}
         links={[]}
@@ -105,6 +106,7 @@ export const AppLayout = React.memo((props: any) => {
                     to={{
                       pathname: "/dashboard",
                     }}
+                    className="label-primary"
                   >
                     {LABELS.MENU_DASHBOARD}
                   </Link>
@@ -114,6 +116,7 @@ export const AppLayout = React.memo((props: any) => {
                     to={{
                       pathname: "/wallet",
                     }}
+                    className="label-primary"
                   >
                     {LABELS.MENU_WALLET}
                   </Link>
@@ -123,6 +126,7 @@ export const AppLayout = React.memo((props: any) => {
                     to={{
                       pathname: "/farming",
                     }}
+                    className="label-primary"
                   >
                     {LABELS.MENU_FARMING}
                   </Link>
@@ -132,6 +136,7 @@ export const AppLayout = React.memo((props: any) => {
                     to={{
                       pathname: "/analytics",
                     }}
+                    className="label-primary"
                   >
                     {LABELS.MENU_ANALYTICS}
                   </Link>
@@ -211,6 +216,7 @@ export const AppLayout = React.memo((props: any) => {
                     href={`https://twitter.com/ArmySatellite`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="label-primary"
                   >
                     Twitter
                   </a>
@@ -221,6 +227,7 @@ export const AppLayout = React.memo((props: any) => {
                     href={'https://discord.gg/tdX3kqEe'}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="label-primary"
                   >
                     Discord
                   </a>
@@ -231,6 +238,7 @@ export const AppLayout = React.memo((props: any) => {
                     href={'https://telegram.me/satelliteArmyBot'}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="label-primary"
                   >
                     Telegram Bot
                   </a>
@@ -241,6 +249,7 @@ export const AppLayout = React.memo((props: any) => {
                     href={config.repository.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="label-primary"
                   >
                     Github
                   </a>
