@@ -61,7 +61,7 @@ export const AppLayout = React.memo((props: any) => {
   }
 
   return (
-    <div className="App">
+    <div className="App background-base ">
       <div className="Banner">
         <div className="Banner-description">{LABELS.AUDIT_WARNING}</div>
       </div>

@@ -1,6 +1,6 @@
 {
-  "name": "Satellite Lending",
-  "short_name": "Satellite Lending",
+  "name": "Satellite",
+  "short_name": "Satellite",
   "display": "standalone",
   "start_url": "./",
   "theme_color": "#002140",

@@ -24,7 +24,7 @@
 }
 
 .home-background {
-  background-image: url("../../assets/viola.jpg");
+  background-image: url("../../assets/background.png");
   width: 100vw;
   height: 100vh;
 }
@@ -43,10 +43,12 @@
   margin-top: 2rem;
 }
 .subtitle {
+  font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
   margin-top: 1rem;
   font-size: 26px;
   font-weight: bolder;
   text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+  text-transform: uppercase;
 }
 .header {
   height: 100px;
@@ -55,7 +57,10 @@
   padding: 12px;
 }
 .header-icon {
-  height: 70px;
+  height: 100px;
+  position: absolute;
+  top: 30px;
+  left: 30px;
 }
 .features {
   display: flex;
@@ -105,4 +110,18 @@
 }
 .button-connect {
   margin-bottom: 2rem;
+  border-radius: 20px;
+  height: 50px;
+  background-color: #000c17;
+  color: rgb(242,193,51);
+  border-color: #000c17;
+  border-width: 3px;
+}
+.button-connect:hover {
+  margin-bottom: 2rem;
+  border-radius: 20px;
+  height: 50px;
+  background-color: #000c17;
+  color: rgb(242,193,51);
+  border-color: rgb(242,193,51);
 }

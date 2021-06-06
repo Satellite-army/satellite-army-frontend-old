@@ -33,7 +33,7 @@ export const LABELS = {
   MENU_FARMING: "Farming",
   MENU_ANALYTICS: "Analytics",
   MARGIN_TRADING: "Margin Trading",
-  APP_TITLE: "Satellite Lending",
+  APP_TITLE: "Satellite",
   CONNECT_BUTTON: "Connect",
   WALLET_TOOLTIP: "Wallet public key",
   WALLET_BALANCE: "Wallet balance",
