@@ -11,9 +11,10 @@ import {
   RocketOutlined,
   ForkOutlined,
   UnorderedListOutlined,
-  // LineChartOutlined
+  // LineChartOutlined,
+  TwitterOutlined,
 } from "@ant-design/icons";
-
+import discordIcon from '../../assets/icon/discordIcon.png'
 import BasicLayout from "@ant-design/pro-layout";
 import { AppBar } from "./../AppBar";
 import { Link, useLocation } from "react-router-dom";
@@ -203,25 +204,24 @@ export const AppLayout = React.memo((props: any) => {
                 mode="inline"
                 className="bottom-links"
               >
-                <Menu.Item key="16" icon={<ForkOutlined />}>
+                <Menu.Item key="16" icon={<TwitterOutlined />}>
                   <a
-                    title="Fork"
-                    href={`${config.repository.url}/fork`}
+                    title="Twitter"
+                    href={`https://twitter.com/ArmySatellite`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Fork
+                    Twitter
                   </a>
                 </Menu.Item>
-                ,
-                <Menu.Item key="15" icon={<GithubOutlined />}>
+                <Menu.Item key="15" icon={<img src={discordIcon} style={{height: 15, width: 15, marginRight: 10}}/>}>
                   <a
-                    title="Gtihub"
-                    href={config.repository.url}
+                    title="Discord"
+                    href={'https://discord.gg/tdX3kqEe'}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Github
+                    Discord
                   </a>
                 </Menu.Item>
               </Menu>
