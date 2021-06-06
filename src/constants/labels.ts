@@ -13,9 +13,9 @@ export const LABELS = {
   REPAY_ACTION: "Repay",
   RESERVE_STATUS_TITLE: "Reserve Status & Configuration",
   AUDIT_WARNING:
-    "Satellite is an unaudited software project used for internal purposes at the Solana Foundation. This app is not for public use.",
+    "Satellite is an unaudited software project in alpha state.",
   FOOTER:
-    'This page was produced by the Solana Foundation ("SF") for internal educational and inspiration purposes only. SF does not encourage, induce or sanction the deployment, integration or use of Satellite or any similar application (including its code) in violation of applicable laws or regulations and hereby prohibits any such deployment, integration or use. Anyone using this code or a derivation thereof must comply with applicable laws and regulations when releasing related software.',
+    'Satellite is unaudited and in alpha phase. We are working to develop a full working version. Powered by CoinGecko API.',
   MENU_HOME: "Home",
   MENU_DASHBOARD: "Dashboard",
   DASHBOARD_INFO: "Connect to a wallet to view your deposits/loans.",
