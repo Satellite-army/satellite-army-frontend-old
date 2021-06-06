@@ -7,7 +7,7 @@ Alcuni appunti di funzioni by Marco Brugali
 
 
 
-Lista totale dei token
+Lista totale dei tokens
 const { tokens, tokenMap } = useConnectionConfig();
 
 -----------------------------------------
