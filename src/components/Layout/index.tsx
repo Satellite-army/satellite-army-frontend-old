@@ -13,6 +13,9 @@ import {
   UnorderedListOutlined,
   // LineChartOutlined,
   TwitterOutlined,
+  WalletOutlined,
+  LineChartOutlined,
+  SmileOutlined
 } from "@ant-design/icons";
 import discordIcon from '../../assets/icon/discordIcon.png'
 import telegramIcon from '../../assets/icon/telegramIcon.png'
@@ -109,7 +112,7 @@ export const AppLayout = React.memo((props: any) => {
                     {LABELS.MENU_DASHBOARD}
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="3" icon={<BankOutlined />}>
+                <Menu.Item key="3" icon={<WalletOutlined />}>
                   <Link
                     to={{
                       pathname: "/wallet",
@@ -127,7 +130,7 @@ export const AppLayout = React.memo((props: any) => {
                     {LABELS.MENU_FARMING}
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="5" icon={<UnorderedListOutlined />}>
+                <Menu.Item key="5" icon={<LineChartOutlined />}>
                   <Link
                     to={{
                       pathname: "/analytics",
@@ -175,9 +178,8 @@ export const AppLayout = React.memo((props: any) => {
                   {LABELS.MARGIN_TRADING}
                 </Link>
               </Menu.Item> */}
-		{/*
-                {env !== "mainnet-beta" && (
-                  <Menu.Item key="7" icon={<RocketOutlined />}>
+                {env == "devnet" && (
+                  <Menu.Item key="7" icon={<SmileOutlined />}>
                     <Link
                       to={{
                         pathname: "/faucet",
@@ -187,6 +189,7 @@ export const AppLayout = React.memo((props: any) => {
                     </Link>
                   </Menu.Item>
                 )}
+                {/*
                 <Menu.Item key="8" icon={<UnorderedListOutlined />}>
                   <Link
                     to={{
@@ -198,6 +201,7 @@ export const AppLayout = React.memo((props: any) => {
                 </Menu.Item>
 		*/}
               </Menu>
+                  
               <Menu
                 theme={theme}
                 defaultSelectedKeys={[defaultKey]}
