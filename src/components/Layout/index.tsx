@@ -15,7 +15,8 @@ import {
   TwitterOutlined,
   WalletOutlined,
   LineChartOutlined,
-  SmileOutlined
+  SmileOutlined,
+  BookOutlined
 } from "@ant-design/icons";
 import discordIcon from '../../assets/icon/discordIcon.png'
 import telegramIcon from '../../assets/icon/telegramIcon.png'
@@ -222,6 +223,17 @@ export const AppLayout = React.memo((props: any) => {
                 mode="inline"
                 className="bottom-links"
               >
+                <Menu.Item key="15" icon={<BookOutlined />}>
+                  <a
+                    title="Docs"
+                    href={`#`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="label-primary"
+                  >
+                    Docs
+                  </a>
+                </Menu.Item>
                 <Menu.Item key="16" icon={<TwitterOutlined />}>
                   <a
                     title="Twitter"
@@ -233,7 +245,7 @@ export const AppLayout = React.memo((props: any) => {
                     Twitter
                   </a>
                 </Menu.Item>
-                <Menu.Item key="15" icon={<img src={discordIcon} style={{height: 15, width: 15, marginRight: 10}}/>}>
+                <Menu.Item key="17" icon={<img src={discordIcon} style={{height: 15, width: 15, marginRight: 10}}/>}>
                   <a
                     title="Discord"
                     href={'https://discord.gg/tdX3kqEe'}
@@ -244,7 +256,7 @@ export const AppLayout = React.memo((props: any) => {
                     Discord
                   </a>
                 </Menu.Item>
-                <Menu.Item key="16" icon={<img src={telegramIcon} style={{height: 15, width: 15, marginRight: 10}}/>}>
+                <Menu.Item key="18" icon={<img src={telegramIcon} style={{height: 15, width: 15, marginRight: 10}}/>}>
                   <a
                     title="Telegram"
                     href={'https://telegram.me/satelliteArmyBot'}
@@ -255,7 +267,7 @@ export const AppLayout = React.memo((props: any) => {
                     Telegram Bot
                   </a>
                 </Menu.Item>
-                <Menu.Item key="17" icon={<GithubOutlined />}>
+                <Menu.Item key="19" icon={<GithubOutlined />}>
                   <a
                     title="Gtihub"
                     href={config.repository.url}
