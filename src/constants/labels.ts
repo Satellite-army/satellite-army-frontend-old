@@ -15,7 +15,7 @@ export const LABELS = {
   AUDIT_WARNING:
     "Satellite is an unaudited software project in alpha state.",
   FOOTER:
-    'Satellite is unaudited and in alpha phase. We are working to develop a full working version. Powered by CoinGecko API.',
+    'Satellite is still in alpha phase, this website is only for demonstrational purposes. We are working to develop a fullly featured version. Powered by CoinGecko API.',
   MENU_HOME: "Home",
   MENU_DASHBOARD: "Dashboard",
   DASHBOARD_INFO: "Connect to a wallet to view your deposits/loans.",
