@@ -1,5 +1,5 @@
 import { MintInfo } from "@solana/spl-token";
-import { Card, Col, Row, Statistic } from "antd";
+import { Button, Card, Col, Row, Select, Statistic } from "antd";
 import React, { useEffect, useState } from "react";
 import { GUTTER, LABELS } from "../../constants";
 import { cache, ParsedAccount } from "../../contexts/accounts";
@@ -11,146 +11,151 @@ import { fromLamports, getTokenName, wadToLamports } from "../../utils/utils";
 import { LendingReserveItem } from "./item";
 import { BarChartStatistic } from "./../../components/BarChartStatistic";
 import "./itemStyle.less";
+import Plot from "react-plotly.js";
+import { Data } from "plotly.js";
+const { Option } = Select;
 
 export const AnalyticsView = () => {
-  const { reserveAccounts } = useLendingReserves();
-  const { marketEmitter, midPriceInUSD } = useMarkets();
-  const { tokenMap } = useConnectionConfig();
-  const [totals, setTotals] = useState<Totals>({
-    marketSize: 0,
-    borrowed: 0,
-    lentOutPct: 0,
-    items: [],
-  });
 
-  useEffect(() => {
-    const refreshTotal = () => {
-      let newTotals: Totals = {
-        marketSize: 0,
-        borrowed: 0,
-        lentOutPct: 0,
-        items: [],
-      };
+  const pools = [{
+    liquidityLink: "https://raydium.io/liquidity/?ammId=58oQChx4yWmvKdwLLZzBi4ChoCc2fqCUWBkwMihLYQo2",
+    lpTokenValue: 1.08,
+    mint1: "So11111111111111111111111111111111111111112",
+    mint2: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    token1: "SOL",
+    token2: "USDC",
+    tvl: "11,546,870.35",
+    lpNumber: 46.4,
+    lpTotalValue: 50,
+    distribution1: 80,
+    distribution2: 0.5,
+    last: "03/06/2021",
+    yieldToken: 140,
+    yieldDollar: 150,
+    ILPercentage: 3,
+    ILDollar: 300,
+    fee: 0.5,
+    optimal: 1,
+    zero1: 40,
+    zero2: 1,
+    firstDeposit: "01/05/2021",
+    harvestCompoundTimes: 3,
+    avgCompound: 5,
+    totalFees: 500
+  }]
 
-      reserveAccounts.forEach((item) => {
-        const marketCapLamports = reserveMarketCap(item.info);
+  const [selected, setSelected] = useState(pools[0].token1 + "/" + pools[0].token2)
+  const [selectedPool1,setPool1] = useState(pools[0].token1)
+  const [selectedPool2, setPool2] = useState(pools[0].token2)
+  const originalData : Data[] = [
+    {
+      x: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      y: [0, 120, 245, 265, 234, 399, 499, 300, 200, 590, 600, 610],
+      type: 'scatter',
+      mode: 'lines+markers',
+      marker: { color: 'red' },
+      name: "LP tokens",
+      line: { shape: 'spline', 'smoothing': 1.3 }
+    },
+    {
+      x: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      y: [150, 130, 105, 342, 455, 599, 300, 223, 300, 210, 433, 634],
+      type: 'scatter',
+      mode: 'lines+markers',
+      marker: { color: 'green' },
+      name: selectedPool1,
+      line: { shape: 'spline', 'smoothing': 1.3 }
+    },
+    {
+      x: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      y: [600, 343, 120, 215, 123, 432, 150, 173, 234, 467, 324, 430],
+      type: 'scatter',
+      mode: 'lines+markers',
+      marker: { color: 'blue' },
+      name: selectedPool2,
+      line: { shape: 'spline', 'smoothing': 1.3 }
+    }
+  ]
+  const AprPlotData: Data[] = [
+    {
+      x: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      y: [20, 70, 80, 90, 80, 120, 140, 150, 200, 170, 190, 343],
+      type: 'scatter',
+      mode: 'lines+markers',
+      marker: { color: 'red' },
+      name: "APR",
+      line: { shape: 'spline', 'smoothing': 1.3 }
+    }
+  ]
+  const [plotData, setPlotData] = useState<Data[]>(originalData)
+  const [clicked,setClicked] = useState(false)
 
-        const localCache = cache;
-        const liquidityMint = localCache.get(
-          item.info.liquidityMint.toBase58()
-        ) as ParsedAccount<MintInfo>;
+  function handleClick() {
+    if(clicked==false){
+      setPlotData([...plotData, {
+        x: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        y: [245, 245, 245, 245, 245, 245, 245, 245, 245, 245, 245, 245],
+        type: 'scatter',
+        mode: 'lines',
+        marker: { color: 'red' },
+        name: "LP entry value",
+        line: { shape: 'spline', 'smoothing': 1.3, dash:'dash'}
+      }, {
+          x: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        y: [120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120],
+          type: 'scatter',
+          mode: 'lines',
+          marker: { color: 'blue' },
+          name: "USDC entry value",
+          line: { shape: 'spline', 'smoothing': 1.3, dash: 'dash' }
+        }, {
+          x: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        y: [105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105],
+          type: 'scatter',
+          mode: 'lines',
+          marker: { color: 'green' },
+          name: "SOL entry value",
+          line: { shape: 'spline', 'smoothing': 1.3, dash: 'dash' }
+        }])
+        setClicked(true)
+      }else{
+        setPlotData([...originalData])
+        setClicked(false)
+      }
+  }
 
-        if (!liquidityMint) {
-          return;
-        }
-
-        const price = midPriceInUSD(liquidityMint?.pubkey.toBase58());
-
-        let leaf = {
-          key: item.pubkey.toBase58(),
-          marketSize:
-            fromLamports(marketCapLamports, liquidityMint?.info) * price,
-          borrowed:
-            fromLamports(
-              wadToLamports(item.info?.state.borrowedLiquidityWad).toNumber(),
-              liquidityMint.info
-            ) * price,
-          name: getTokenName(tokenMap, item.info.liquidityMint.toBase58()),
-        };
-
-        newTotals.items.push(leaf);
-
-        newTotals.marketSize = newTotals.marketSize + leaf.marketSize;
-        newTotals.borrowed = newTotals.borrowed + leaf.borrowed;
-      });
-
-      newTotals.lentOutPct = newTotals.borrowed / newTotals.marketSize;
-      newTotals.lentOutPct = Number.isFinite(newTotals.lentOutPct)
-        ? newTotals.lentOutPct
-        : 0;
-      newTotals.items = newTotals.items.sort(
-        (a, b) => b.marketSize - a.marketSize
-      );
-
-      setTotals(newTotals);
-    };
-
-    const dispose = marketEmitter.onMarket(() => {
-      refreshTotal();
-    });
-
-    refreshTotal();
-
-    return () => {
-      dispose();
-    };
-  }, [marketEmitter, midPriceInUSD, setTotals, reserveAccounts, tokenMap]);
+  
+  function handleChange(value: any) {
+    const selectedPools = value.split("/")
+    setSelected(value)
+    setPool1(selectedPools[0])
+    setPool1(selectedPools[1])
+  }
 
   return (
     <div className="flexColumn">
-      <Row gutter={GUTTER} className="home-info-row">
-        <Col xs={24} xl={5}>
-          <Card>
-            <Statistic
-              title="Current market size"
-              value={totals.marketSize}
-              precision={2}
-              valueStyle={{ color: "#3fBB00" }}
-              prefix="$"
-            />
-          </Card>
-        </Col>
-        <Col xs={24} xl={5}>
-          <Card>
-            <Statistic
-              title="Total borrowed"
-              value={totals.borrowed}
-              precision={2}
-              prefix="$"
-            />
-          </Card>
-        </Col>
-        <Col xs={24} xl={5}>
-          <Card>
-            <Statistic
-              title="% Lent out"
-              value={totals.lentOutPct * 100}
-              precision={2}
-              suffix="%"
-            />
-          </Card>
-        </Col>
-        <Col xs={24} xl={9}>
-          <Card>
-            <BarChartStatistic
-              title="Market composition"
-              name={(item) => item.name}
-              getPct={(item) => item.marketSize / totals.marketSize}
-              items={totals.items}
-            />
-          </Card>
-        </Col>
-      </Row>
-
-      <Card>
-        <div className="home-item home-header">
-          <div>{LABELS.TABLE_TITLE_ASSET}</div>
-          <div>{LABELS.TABLE_TITLE_MARKET_SIZE}</div>
-          <div>{LABELS.TABLE_TITLE_TOTAL_BORROWED}</div>
-          <div>{LABELS.TABLE_TITLE_DEPOSIT_APY}</div>
-          <div>{LABELS.TABLE_TITLE_BORROW_APY}</div>
-        </div>
-        {reserveAccounts.map((account) => (
-          <LendingReserveItem
-            key={account.pubkey.toBase58()}
-            reserve={account.info}
-            address={account.pubkey}
-            item={totals.items.find(
-              (item) => item.key === account.pubkey.toBase58()
-            )}
-          />
+      <div style={{display:"flex"}}>
+      <Select defaultValue={pools[0].token1 + "/" + pools[0].token2} style={{ width: 120, marginBottom: "20px", marginRight:"20px" }} onChange={handleChange}>
+        {pools.map((pool) => (
+          <Option value={pool.token1 + "/" + pool.token2}>{pool.token1 + "/" + pool.token2}</Option>
         ))}
-      </Card>
+      </Select>
+      <Button style={{width:"200px"}} type="primary" onClick={handleClick}>Show entry value</Button>
+      </div>
+      <Plot
+        data={plotData}
+        layout={{
+          width: 1200, height: 500, title: selected + " LP", xaxis: { title: 'time' }, yaxis: { title: 'value ($)' }
+        }}
+        
+      />
+      <Plot
+        data={AprPlotData}
+        layout={{
+          width: 1200, height: 500, title: selected + " APR", xaxis: { title: 'time' }, yaxis: { title: 'APR %' }
+        }}
+
+      />
     </div>
   );
 };
