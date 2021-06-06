@@ -235,6 +235,16 @@ export const AppLayout = React.memo((props: any) => {
                     Telegram Bot
                   </a>
                 </Menu.Item>
+                <Menu.Item key="17" icon={<GithubOutlined />}>
+                  <a
+                    title="Gtihub"
+                    href={config.repository.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Github
+                  </a>
+                </Menu.Item>
               </Menu>
             </div>
           );
