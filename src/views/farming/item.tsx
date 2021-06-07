@@ -23,7 +23,7 @@ export const FarmingItem = (props: any) => {
         </Radio.Group>
       </div>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", maxWidth: "50%" }}>
-        <InputNumber style={{ verticalAlign: "middle" }} min={0} defaultValue={0} />
+        <InputNumber style={{ verticalAlign: "middle", marginRight:"5px" }} min={0} defaultValue={0} />%
       </div>
     </div>
       <div style={{ textAlign: "center" }}>
