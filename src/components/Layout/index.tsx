@@ -226,7 +226,7 @@ export const AppLayout = React.memo((props: any) => {
                 <Menu.Item key="15" icon={<BookOutlined />}>
                   <a
                     title="Docs"
-                    href={`#`}
+                    href={`http://satellite-army-book.s3-website-eu-west-1.amazonaws.com/`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="label-primary"
@@ -269,7 +269,7 @@ export const AppLayout = React.memo((props: any) => {
                 </Menu.Item>
                 <Menu.Item key="19" icon={<GithubOutlined />}>
                   <a
-                    title="Gtihub"
+                    title="Github"
                     href={config.repository.url}
                     target="_blank"
                     rel="noopener noreferrer"
