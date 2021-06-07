@@ -37,10 +37,10 @@ export const FarmingView = () => {
     avgCompound: 5,
     totalFees: 500
   },{
-    liquidityLink: "https://raydium.io/liquidity/?ammId=58oQChx4yWmvKdwLLZzBi4ChoCc2fqCUWBkwMihLYQo2",
+    liquidityLink: "https://raydium.io/liquidity/?ammId=5NMFfbccSpLdre6anA8P8vVy35n2a52AJiNPpQn8tJnE",
     lpTokenValue: 3.52,
-    mint1: "So11111111111111111111111111111111111111112",
-    mint2: "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+    mint1: "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+    mint2: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
     token1: "RAY",
     token2: "USDC",
     tvl: "37,145,725.85",
@@ -62,7 +62,7 @@ export const FarmingView = () => {
     avgCompound: 4,
     totalFees: 400
   },{
-    liquidityLink: "https://raydium.io/liquidity/?ammId=58oQChx4yWmvKdwLLZzBi4ChoCc2fqCUWBkwMihLYQo2",
+    liquidityLink: "https://raydium.io/liquidity/?ammId=HeRUVkQyPuJAPFXUkTaJaWzimBopWbJ54q5DCMuPpBY4",
     lpTokenValue: 504.58,
     mint1: "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
     mint2: "So11111111111111111111111111111111111111112",
