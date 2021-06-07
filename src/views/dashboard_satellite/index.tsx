@@ -179,6 +179,11 @@ export const DashboardSatelliteView = () => {
     };
   }, [marketEmitter, midPriceInUSD, setTotals, reserveAccounts, tokenMap, userAccounts]);
 
+  const totalLp = (userAccounts[0] ? 169 : 0)
+  const totalStaked = (userAccounts[0] ? 150 : 0)
+  const totalFees = (userAccounts[0] ? 20 : 0)
+
+
   // useEffect(() => {
   //   const refreshTotal = () => {
   //     let newTotals: Totals = {
@@ -246,7 +251,7 @@ export const DashboardSatelliteView = () => {
 
   return (
     <div className="flexColumn">
-      <Row gutter={GUTTER} className="home-info-row">
+      <Row gutter={GUTTER} className="home-info-row" justify="center">
         <Col xs={24} xl={6}>
           <Card>
             <Statistic
@@ -261,13 +266,34 @@ export const DashboardSatelliteView = () => {
         <Col xs={24} xl={6}>
           <Card>
             <Statistic
-              title="Total Deposit"
-              value={totals.totaldeposit}
+              title="Total LP tokens value"
+              value={totalLp}
               precision={2}
               prefix="$"
             />
           </Card>
         </Col>
+        <Col xs={24} xl={6}>
+          <Card>
+            <Statistic
+              title="Total staked"
+              value={totalStaked}
+              precision={2}
+              prefix="$"
+            />
+          </Card>
+        </Col>
+        <Col xs={24} xl={6}>
+          <Card>
+            <Statistic
+              title="Total fees"
+              value={totalFees}
+              precision={2}
+              prefix="$"
+            />
+          </Card>
+        </Col>
+        {/*
         <Col xs={24} xl={6}>
           <Card>
             <Statistic
@@ -287,7 +313,7 @@ export const DashboardSatelliteView = () => {
               prefix="$"
             />
           </Card>
-          {/*
+          
           <Card>
             <BarChartStatistic
               title="Total Debt"
@@ -296,8 +322,8 @@ export const DashboardSatelliteView = () => {
               items={totals.items}
             />
           </Card>
-          */}
         </Col>
+        */}
       </Row>
       <Row gutter={GUTTER} className="home-info-row" style={{marginTop:"40"}}>
         <Col xs={24} xl={6}>
