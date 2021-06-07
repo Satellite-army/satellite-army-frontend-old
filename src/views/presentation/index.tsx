@@ -17,6 +17,8 @@ import Lottie from 'react-lottie';
 import planet1 from '../../assets/animation/planet1.json'
 import planet2 from '../../assets/animation/planet2.json'
 import planet3 from '../../assets/animation/planet3.json'
+import extendedLogo from '../../assets/scritta.png'
+
 
 export const PresentationPage = () => {
   const { reserveAccounts } = useLendingReserves();
@@ -26,8 +28,10 @@ export const PresentationPage = () => {
 
 
   const renderAnimation = (animationData: any) => {
+
+    console.log(animationData)
     const defaultOptions = {
-      loop: true,
+      loop: false,
       autoplay: true,
       animationData: animationData,
       rendererSettings: {
@@ -46,43 +50,43 @@ export const PresentationPage = () => {
 
   return (
     <div className="home-background">
-      <Card className="header">
-        <img className="header-icon" src={Icon}/>
-      </Card>
+      {/*<Card className="header">*/}
+      <img className="header-icon" src={Icon}/>
+      {/*</Card>*/}
 
       <div className="body">
-        <div className="title" ><img src="/scritta.png" width="400" height="145"/></div>
+        <div className="title" ><img src={extendedLogo} width="500" height="110"/></div>
         <div className="subtitle">The most complete tracking tool for DeFi, native to Solana</div>
 
         <div className="features">
           <div className="feature feature-top">
             {renderAnimation(planet1)}
             <div className="circle">
-              <div className="feature-title">Feature 1</div>
+              <div className="feature-title">Yield</div>
             </div>
-            <div className="feature-description">lorem ipsum dolor sit amet</div>
+            <div className="feature-description">Track your LP farming tokens</div>
           </div>
           <div className="feature">
             {renderAnimation(planet2)}
             <div className="circle">
-              <div className="feature-title">Feature 2</div>
+              <div className="feature-title">Impermanent Loss</div>
             </div>
-            <div className="feature-description">lorem ipsum dolor sit amet</div>
+            <div className="feature-description">Easily access IL value of your pools</div>
           </div>
           <div className="feature feature-top">
             {renderAnimation(planet3)}
             <div className="circle">
-              <div className="feature-title">Feature 3</div>
+              <div className="feature-title">Alerts</div>
             </div>
-            <div className="feature-description">lorem ipsum dolor sit amet</div>
+            <div className="feature-description">Setup alerts on price, IL and security updates</div>
           </div>
         </div>
         <div className="buttons">
           <Link to="/dashboard">
-            <Button type="primary" className="button-connect">Connect to the galaxy</Button>
+            <Button type="primary" className="button-connect" style={{fontWeight:"bold"}}>Connect to the galaxy</Button>
           </Link>
           <Link to="/dashboard">
-            <Button type="primary">Not sure? take a look to our demo</Button>
+            <Button type="primary" className="button-connect" style={{ fontWeight: "bold" }}>Not sure? take a look to our demo</Button>
           </Link>
         </div>
       </div>
