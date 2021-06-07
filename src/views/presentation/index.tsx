@@ -85,9 +85,9 @@ export const PresentationPage = () => {
           <Link to="/dashboard">
             <Button type="primary" className="button-connect" style={{fontWeight:"bold"}}>Connect to the galaxy</Button>
           </Link>
-          <Link to="/dashboard">
+          <a href="https://drive.google.com/file/d/1nrwCG2CfgJbdm0TTinsqNNpQT4WuXbXC/view" target="_blank">
             <Button type="primary" className="button-connect" style={{ fontWeight: "bold" }}>Not sure? take a look to our demo</Button>
-          </Link>
+          </a>
         </div>
       </div>
 
