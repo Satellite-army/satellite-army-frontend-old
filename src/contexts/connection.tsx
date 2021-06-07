@@ -45,7 +45,7 @@ export type ENV =
   | "devnet"
 
 export const ENDPOINTS = [
-  { name: "devnet" as ENV, endpoint: clusterApiUrl("devnet") }];
+  { name: "devnet" as ENV, endpoint: "https://api.devnet.solana.com/ " }];
 
 const DEFAULT = ENDPOINTS[0].endpoint;
 const DEFAULT_SLIPPAGE = 0.25;
